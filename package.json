@@ -1,0 +1,88 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "react-native-gcm-android@git+https://github.com/InnerPeace080/react-native-gcm-android.git#RN-0.37",
+        "scope": null,
+        "escapedName": "react-native-gcm-android",
+        "name": "react-native-gcm-android",
+        "rawSpec": "git+https://github.com/InnerPeace080/react-native-gcm-android.git#RN-0.37",
+        "spec": "git+https://github.com/InnerPeace080/react-native-gcm-android.git#RN-0.37",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:InnerPeace080/react-native-gcm-android.git#RN-0.37",
+          "sshUrl": "git+ssh://git@github.com/InnerPeace080/react-native-gcm-android.git#RN-0.37",
+          "httpsUrl": "git+https://github.com/InnerPeace080/react-native-gcm-android.git#RN-0.37",
+          "gitUrl": "git://github.com/InnerPeace080/react-native-gcm-android.git#RN-0.37",
+          "shortcut": "github:InnerPeace080/react-native-gcm-android#RN-0.37",
+          "directUrl": "https://raw.githubusercontent.com/InnerPeace080/react-native-gcm-android/RN-0.37/package.json"
+        }
+      },
+      "C:\\Users\\ADMIN\\mobiles"
+    ]
+  ],
+  "_from": "git+https://github.com/InnerPeace080/react-native-gcm-android.git#RN-0.37",
+  "_id": "react-native-gcm-android@0.2.0",
+  "_inCache": true,
+  "_location": "/react-native-gcm-android",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "react-native-gcm-android@git+https://github.com/InnerPeace080/react-native-gcm-android.git#RN-0.37",
+    "scope": null,
+    "escapedName": "react-native-gcm-android",
+    "name": "react-native-gcm-android",
+    "rawSpec": "git+https://github.com/InnerPeace080/react-native-gcm-android.git#RN-0.37",
+    "spec": "git+https://github.com/InnerPeace080/react-native-gcm-android.git#RN-0.37",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:InnerPeace080/react-native-gcm-android.git#RN-0.37",
+      "sshUrl": "git+ssh://git@github.com/InnerPeace080/react-native-gcm-android.git#RN-0.37",
+      "httpsUrl": "git+https://github.com/InnerPeace080/react-native-gcm-android.git#RN-0.37",
+      "gitUrl": "git://github.com/InnerPeace080/react-native-gcm-android.git#RN-0.37",
+      "shortcut": "github:InnerPeace080/react-native-gcm-android#RN-0.37",
+      "directUrl": "https://raw.githubusercontent.com/InnerPeace080/react-native-gcm-android/RN-0.37/package.json"
+    }
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "git+https://github.com/InnerPeace080/react-native-gcm-android.git#e2fe6bf7490d2917a1eababcfb3055ec141fbc53",
+  "_shasum": "ea35e921316ec089c3deabf1a5f44f6776e022d3",
+  "_shrinkwrap": null,
+  "_spec": "react-native-gcm-android@git+https://github.com/InnerPeace080/react-native-gcm-android.git#RN-0.37",
+  "_where": "C:\\Users\\ADMIN\\mobiles",
+  "author": {
+    "name": "Oney",
+    "email": "appdevoney@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/oney/react-native-gcm-android/issues"
+  },
+  "dependencies": {},
+  "description": "GCM for React Native Android",
+  "devDependencies": {},
+  "gitHead": "e2fe6bf7490d2917a1eababcfb3055ec141fbc53",
+  "homepage": "https://github.com/oney/react-native-gcm-android",
+  "keywords": [
+    "react-component",
+    "react-native",
+    "android",
+    "GCM"
+  ],
+  "name": "react-native-gcm-android",
+  "nativePackage": true,
+  "optionalDependencies": {},
+  "peerDependencies": {
+    "react-native": ">=0.30.0",
+    "react-native-system-notification": "^0.2.0"
+  },
+  "readme": "# react-native-gcm-android\r\n\r\nGCM for React Native Android\r\n\r\n## Demo\r\n\r\nhttps://github.com/oney/TestGcm\r\n\r\n## Installation\r\n\r\n- Run `npm install react-native-gcm-android --save`\r\n\r\n- In `android/build.gradle`\r\n```gradle\r\ndependencies {\r\n    classpath 'com.android.tools.build:gradle:1.3.1'\r\n    classpath 'com.google.gms:google-services:1.5.0-beta3' // <- Add this line\r\n```\r\n\r\n- In `android/settings.gradle`, add\r\n```gradle\r\ninclude ':RNGcmAndroid', ':app'\r\nproject(':RNGcmAndroid').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-gcm-android/android')\r\n\r\ninclude ':react-native-system-notification'\r\nproject(':react-native-system-notification').projectDir = new File(settingsDir, '../node_modules/react-native-system-notification/android')\r\n```\r\n\r\n- In `android/app/build.gradle`\r\n```gradle\r\napply plugin: \"com.android.application\"\r\napply plugin: 'com.google.gms.google-services'           // <- Add this line\r\n...\r\ndependencies {\r\n    compile fileTree(dir: \"libs\", include: [\"*.jar\"])\r\n    compile \"com.android.support:appcompat-v7:23.0.1\"\r\n    compile \"com.facebook.react:react-native:0.16.+\"\r\n    compile 'com.google.android.gms:play-services-gcm:8.3.0' // <- Add this line\r\n    compile project(':RNGcmAndroid')                         // <- Add this line\r\n    compile project(':react-native-system-notification')     // <- Add this line\r\n}\r\n```\r\n\r\n- In `android/app/src/main/AndroidManifest.xml`, add these lines, be sure to change `com.xxx.yyy` to your package\r\n```xml\r\n<uses-permission android:name=\"com.google.android.c2dm.permission.RECEIVE\" />\r\n<uses-permission android:name=\"android.permission.WAKE_LOCK\" />\r\n<uses-permission android:name=\"com.google.android.c2dm.permission.SEND\" />\r\n<uses-permission android:name=\"android.permission.GET_ACCOUNTS\" />\r\n<uses-permission android:name=\"android.permission.GET_TASKS\" /> \r\n<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\"/>\r\n\r\n<permission\r\n  android:name=\"com.xxx.yyy.permission.C2D_MESSAGE\"\r\n  android:protectionLevel=\"signature\" />\r\n<uses-permission android:name=\"com.xxx.yyy.permission.C2D_MESSAGE\" />\r\n<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />\r\n<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />\r\n<uses-permission android:name=\"android.permission.VIBRATE\"></uses-permission>\r\n\r\n...\r\n\r\n<application\r\n  android:theme=\"@style/AppTheme\">\r\n\r\n  ...\r\n  <meta-data\r\n    android:name=\"com.google.android.gms.version\"\r\n    android:value=\"@integer/google_play_services_version\" />\r\n\r\n  <receiver\r\n    android:name=\"com.google.android.gms.gcm.GcmReceiver\"\r\n    android:exported=\"true\"\r\n    android:permission=\"com.google.android.c2dm.permission.SEND\" >\r\n    <intent-filter>\r\n      <action android:name=\"com.google.android.c2dm.intent.RECEIVE\" />\r\n      <category android:name=\"com.xxx.yyy\" />\r\n    </intent-filter>\r\n  </receiver>\r\n  <service android:name=\"com.oney.gcm.GcmRegistrationService\"/>\r\n  <service android:name=\"com.oney.gcm.BackgroundService\"></service>\r\n\r\n  <service\r\n    android:name=\"com.oney.gcm.RNGcmListenerService\"\r\n    android:exported=\"false\" >\r\n    <intent-filter>\r\n      <action android:name=\"com.google.android.c2dm.intent.RECEIVE\" />\r\n    </intent-filter>\r\n  </service>\r\n  <receiver\r\n    android:exported=\"false\"\r\n    android:name=\"com.oney.gcm.GcmBroadcastReceiver\">\r\n    <intent-filter>\r\n      <action android:name=\"com.oney.gcm.GCMReceiveNotification\" />\r\n      </intent-filter>\r\n  </receiver>\r\n\r\n  <receiver android:name=\"io.neson.react.notification.NotificationEventReceiver\" />\r\n  <receiver android:name=\"io.neson.react.notification.NotificationPublisher\" />\r\n  <receiver android:name=\"io.neson.react.notification.SystemBootEventReceiver\">\r\n    <intent-filter>\r\n      <action android:name=\"android.intent.action.BOOT_COMPLETED\"></action>\r\n    </intent-filter>\r\n  </receiver>\r\n  ...\r\n```\r\n- In `android/app/src/main/java/com/testoe/MainActivity.java`\r\n```java\r\nimport com.oney.gcm.GcmPackage;                             // <- Add this line\r\nimport io.neson.react.notification.NotificationPackage;     // <- Add this line\r\n    ...\r\n        .addPackage(new MainReactPackage())\r\n        .addPackage(new GcmPackage())                       // <- Add this line\r\n        .addPackage(new NotificationPackage(this))          // <- Add this line\r\n```\r\n\r\n### GCM API KEY\r\nBy following [Cloud messaging](https://developers.google.com/cloud-messaging/android/client), you can get `google-services.json` file and place it in `android/app` directory\r\n\r\n### Usage\r\n\r\n```javascript\r\n'use strict';\r\n\r\nvar React = require('react-native');\r\nvar {\r\n  AppRegistry,\r\n  View,\r\n  DeviceEventEmitter,\r\n} = React;\r\n\r\nvar GcmAndroid = require('react-native-gcm-android');\r\nimport Notification from 'react-native-system-notification';\r\n\r\nif (GcmAndroid.launchNotification) {\r\n  var notification = GcmAndroid.launchNotification;\r\n  var info = JSON.parse(notification.info);\r\n  Notification.create({\r\n    subject: info.subject,\r\n    message: info.message,\r\n  });\r\n  GcmAndroid.stopService();\r\n} else {\r\n\r\n  var {Router, Route, Schema, Animations, TabBar} = require('react-native-router-flux');\r\n  var YourApp = React.createClass({\r\n    componentDidMount: function() {\r\n      GcmAndroid.addEventListener('register', function(token){\r\n        console.log('send gcm token to server', token);\r\n      });\r\n      GcmAndroid.addEventListener('registerError', function(error){\r\n        console.log('registerError', error.message);\r\n      });\r\n      GcmAndroid.addEventListener('notification', function(notification){\r\n        console.log('receive gcm notification', notification);\r\n        var info = JSON.parse(notification.data.info);\r\n        if (!GcmAndroid.isInForeground) {\r\n          Notification.create({\r\n            subject: info.subject,\r\n            message: info.message,\r\n          });\r\n        }\r\n      });\r\n\r\n      DeviceEventEmitter.addListener('sysNotificationClick', function(e) {\r\n        console.log('sysNotificationClick', e);\r\n      });\r\n\r\n      GcmAndroid.requestPermissions();\r\n    },\r\n    render: function() {\r\n      return (\r\n        ...\r\n      );\r\n    }\r\n  });\r\n\r\n  AppRegistry.registerComponent('YourApp', () => YourApp);\r\n}\r\n```\r\n\r\n* There are two situations.\r\n##### The app is running on the foreground or background.\r\n`GcmAndroid.launchNotification` is `null`, you can get notification in `GcmAndroid.addEventListener('notification'` listenter.\r\n##### The app is killed/closed\r\n`GcmAndroid.launchNotification` is your GCM data. You can create notification with resolving the data by using [react-native-system-notification module](https://github.com/Neson/react-native-system-notification).\r\n\r\n* You can get info when clicking notification in `DeviceEventEmitter.addListener('sysNotificationClick'`. See [react-native-system-notification](https://github.com/Neson/react-native-system-notification) to get more informations about how to create notification \r\n\r\n## Troubleshoot\r\n\r\n- Do not add `multiDexEnabled true` in `android/app/build.gradle` even encounter `com.android.dex.DexException: Multiple dex files...` failure.\r\n- Make sure to install Google Play service in Genymotion simulator before testing.\r\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oney/react-native-gcm-android.git"
+  },
+  "version": "0.2.0"
+}

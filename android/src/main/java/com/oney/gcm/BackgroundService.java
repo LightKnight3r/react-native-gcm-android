@@ -10,8 +10,6 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.common.LifecycleState;
 
 import io.neson.react.notification.NotificationPackage;
-import com.oney.gcm.PusherReceiver;
-import com.oney.gcm.UnlockScreenActivity;
 
 public class BackgroundService extends Service {
     private static final String TAG = "BackgroundService";

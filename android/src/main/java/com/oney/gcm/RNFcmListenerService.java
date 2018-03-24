@@ -46,9 +46,11 @@ public class RNFcmListenerService extends FirebaseMessagingService {
         for (Map.Entry<String, String> entry : remoteMessage.getData().entrySet()) {
             bundle.putString(entry.getKey(), entry.getValue());
         }
-        String link = (String)remoteMessage.getData().get("link");
-        if(link.equals("WebRTC") && GcmApplication.isActivityVisible()) {
-          sendCallNotification(bundle);
+        if(remoteMessage.getData().get("link") != null) {
+          String link = (String)remoteMessage.getData().get("link");
+          if(link.equals("WebRTC") && GcmApplication.isActivityVisible()) {
+            sendCallNotification(bundle);
+          }
         }
         sendNotification(bundle);
     }

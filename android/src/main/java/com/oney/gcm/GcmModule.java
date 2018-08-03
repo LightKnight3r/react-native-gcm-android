@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.app.NotificationChannel;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.LifecycleEventListener;
@@ -44,6 +45,7 @@ public class GcmModule extends ReactContextBaseJavaModule implements LifecycleEv
     private final static String TAG = GcmModule.class.getCanonicalName();
     private Intent mIntent;
     private boolean mIsInForeground;
+    private static final String CHANNEL_ID = "channel_ss_first";
 
     public GcmModule(ReactApplicationContext reactContext, Intent intent) {
         super(reactContext);
@@ -206,9 +208,26 @@ public class GcmModule extends ReactContextBaseJavaModule implements LifecycleEv
             return null;
         }
     }
-
+    private void createChannel() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O)
+          return;
+        NotificationManager mNotificationManager = (NotificationManager) getReactApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        // The id of the channel.
+        String id = CHANNEL_ID;
+        // The user-visible name of the channel.
+        CharSequence name = "rn-gcm-android";
+        int importance = NotificationManager.IMPORTANCE_HIGH;
+        NotificationChannel mChannel = new NotificationChannel(id, name, importance);
+        // Configure the notification channel.
+        //mChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+        mChannel.enableLights(true);
+        mChannel.enableVibration(true);
+        mNotificationManager.createNotificationChannel(mChannel);
+    }
     @ReactMethod
     public void createNotification(ReadableMap infos) {
+        createChannel();
+
         Resources resources = getReactApplicationContext().getResources();
 
         String packageName = getReactApplicationContext().getPackageName();
@@ -236,7 +255,7 @@ public class GcmModule extends ReactContextBaseJavaModule implements LifecycleEv
 
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getReactApplicationContext())
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getReactApplicationContext(),CHANNEL_ID)
                 .setLargeIcon(largeIcon)
                 .setSmallIcon(smallIconResourceId)
                 .setContentTitle(infos.getString("subject"))
@@ -248,7 +267,7 @@ public class GcmModule extends ReactContextBaseJavaModule implements LifecycleEv
                 .setVisibility(NotificationCompat.VISIBILITY_PRIVATE)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setContentIntent(pendingIntent);
-
+        notificationBuilder.setChannelId(CHANNEL_ID);
         NotificationManager notificationManager =
                 (NotificationManager) getReactApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 

@@ -21,9 +21,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import android.os.CountDownTimer;
 import com.oney.gcm.GcmApplication;
 import android.view.KeyEvent;
+import android.app.KeyguardManager;
+import android.app.KeyguardManager.KeyguardLock;
+import android.app.KeyguardManager.OnKeyguardExitResult;
+
 
 public class UnlockScreenActivity extends ReactActivity {
     private static final String TAG = "UnlockScreenActivity";
+    KeyguardManager.KeyguardLock keylock;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
@@ -81,6 +86,17 @@ public class UnlockScreenActivity extends ReactActivity {
             finish();
           }
       });
+      KeyguardManager kgm = (KeyguardManager)getSystemService(this.KEYGUARD_SERVICE);
+
+      if(kgm.isKeyguardSecure()) {
+          kgm.exitKeyguardSecurely(new OnKeyguardExitResult() {
+
+    				public void onKeyguardExitResult(boolean success) {
+    					  keylock.disableKeyguard();
+    				}
+
+    			});
+      }
     }
     private void sendEvent(ReactContext reactContext, String eventName, WritableMap params) {
         reactContext

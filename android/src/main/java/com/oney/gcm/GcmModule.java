@@ -45,7 +45,7 @@ public class GcmModule extends ReactContextBaseJavaModule implements LifecycleEv
     private final static String TAG = GcmModule.class.getCanonicalName();
     private Intent mIntent;
     private boolean mIsInForeground;
-    private static final String CHANNEL_ID = "channel_ss_first";
+    private static final String CHANNEL_ID = "channel_sysnotify";
 
     public GcmModule(ReactApplicationContext reactContext, Intent intent) {
         super(reactContext);

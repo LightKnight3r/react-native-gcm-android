@@ -10,6 +10,9 @@ import com.facebook.react.ReactRootView;
 import com.facebook.react.common.LifecycleState;
 
 import io.neson.react.notification.NotificationPackage;
+import android.app.Notification;
+import android.os.Build;
+import com.oney.gcm.GcmApplication;
 
 public class BackgroundService extends Service {
     private static final String TAG = "BackgroundService";
@@ -43,7 +46,16 @@ public class BackgroundService extends Service {
 
 //        mReactRootView.startReactApplication(mReactInstanceManager, "GCMHandle", null);
         mReactInstanceManager.createReactContextInBackground();
-
+        // if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !GcmApplication.isActivityVisible()) {
+        //
+        //   Notification.Builder builder = new Notification.Builder(this, "channel_sysnotify")
+        //           .setContentTitle("Săn Ship")
+        //           .setContentText("ahihi")
+        //           .setAutoCancel(true);
+        //   Notification notification = builder.build();
+        //   startForeground(1, notification);
+        //
+        // }
         return START_NOT_STICKY;
     }
 

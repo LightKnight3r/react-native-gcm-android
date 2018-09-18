@@ -26,7 +26,7 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
         //    try {
         //      notifyInfo.put(key, JSONObject.wrap(bundle.get(key)));
         //      link = (String)notifyInfo.get("link");
-        // 
+        //
         //    } catch(JSONException e) {
         //        //Handle exception here
         //    }
@@ -34,8 +34,12 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
         //if(!link.equals("WebRTC")) {
          Intent newIntent = new Intent(context, BackgroundService.class);
          newIntent.putExtra("bundle", bundle);
-         context.startService(newIntent);
-         abortBroadcast();
+         // if (Build.VERSION.SDK_INT >= 26) {
+         //   context.startForegroundService(newIntent);
+         // } else {
+           context.startService(newIntent);
+         // }
+         //abortBroadcast();
         //}
     }
 }

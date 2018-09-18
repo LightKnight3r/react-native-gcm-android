@@ -37,6 +37,7 @@ import android.content.Context;
 import android.os.Build;
 import android.content.ComponentName;
 import com.oney.gcm.GcmApplication;
+import android.app.Activity;
 
 public class RNFcmListenerService extends FirebaseMessagingService {
     private static final String TAG = "RNFcmListenerService";
@@ -64,11 +65,13 @@ public class RNFcmListenerService extends FirebaseMessagingService {
     }
 
     private void sendNotification(Bundle bundle) {
-        Log.d(TAG, "sendNotification");
-
-        Intent i = new Intent("com.oney.gcm.GCMReceiveNotification");
-        i.putExtra("bundle", bundle);
+      Log.d(TAG, "sendNotification");
+      Intent i = new Intent("com.oney.gcm.GCMReceiveNotification");
+      i.putExtra("bundle", bundle);
+      if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O || GcmApplication.isActivityVisible()) {
         sendOrderedBroadcast(i, null);
+      } else {
+        sendOrderedBroadcast(i,null,new GcmBroadcastReceiver(),null,Activity.RESULT_OK,null,null);
+      }
     }
-
 }
